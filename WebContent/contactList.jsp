@@ -33,7 +33,7 @@
 		<div class="container">
 			<h1 style="color: #e1e1d0; text-align: center; font-size: 50px;">CONTACTS</h1>
 
-			<table class="table table-hover" padding: 150px>
+			<table class="table table-hover" >
 				<thead>
 					<tr>
 						<th>#</th>
@@ -48,15 +48,16 @@
 				</thead>
 				<tbody>
 
-					<c:forEach items="${contacts}" var="contact" varStatus="counter">
+					<c:forEach items="${contactList}" var="contact" varStatus="counter">
 						<tr>
 							<td>${counter.count}</td>
-							<td>${contact.name}</td>
-							<td>${contact.lastname}</td>
-							<td>${contact.email}</td>
-							<td>${contact.phone}</td>
-							<td><a href="edit?id=${contact.contactId}">Edit Contact</a></td>
-							<td><a href="delete?id=${contact.contactId}">Delete
+							<td>${contactList.name}</td>
+							<td>${contactList.lastname}</td>
+							<td>${contactList.email}</td>
+							<td>${contactList.phone}</td>
+							<td>${contactList.city}</td>
+							<td><a href="editContactServlet?id=${contactList.contactID}">Edit Contact</a></td>
+							<td><a href="deleteServlet?id=${contact.contactId}">Delete
 									Contact</a></td>
 							<td></td>
 

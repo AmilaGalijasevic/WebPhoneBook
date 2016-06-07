@@ -6,11 +6,16 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="css/css/register.css">
-<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+-->
 <title>Log In to Web Phone Book</title>
+
+<link rel="stylesheet" href="css/css/register.css">
+<link href="css/css/bootstrap.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -34,18 +39,17 @@
 
 			<div class="container">
 
-				<form class="form-signin" id="logIn" action="LogInServlet" method="post">
-					<h2 class="form-signin-heading"></h2>
+				<form class="form-signin" id="logIn" action="UerLogInServlet" method="post">
+					<h2 class="form-signin-heading"></h2><br>
 					<label for="email" class="sr-only">Email address</label> <input
-						type="email" id="email" class="form-control"
-						placeholder="Email address" required autofocus> <label
+						type="email" id="email" name = "email" class="form-control"
+						placeholder="Email address" required autofocus>
+						<br> <label
 						for="password" class="sr-only">Password</label> <input
-						type="password" id="password" class="form-control"
-						placeholder="Password" required> <a href="search.html"
-						class="btn btn-info" role="button"
-						style="font-family: Serif; color: #e1e1d0;">Sign in</a>
-
-					<button href="search.jsp" class="btn btn-lg btn-primary btn-block"
+						type="password" id="password" name = "password" class="form-control"
+						placeholder="Password" required>
+						<br>
+					<button class="btn btn-lg btn-primary btn-block"
 						type="submit">Sign in</button>
 				</form>
 

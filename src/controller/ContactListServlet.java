@@ -1,6 +1,8 @@
 package controller;
 
+
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -9,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bo.ContactsImpl;
+import dao.ContactDaoImplementacija;
 import dto.Contacts;
 import dto.User;
 
@@ -32,14 +34,20 @@ public class ContactListServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		User user = (User) request.getSession(false).getAttribute("user");
+		
+		ContactDaoImplementacija dao = new ContactDaoImplementacija();
 
-		ContactsImpl contactsImpl = new ContactsImpl();
+		ArrayList<Contacts> contactList;
+		try {
+			contactList = dao.getAllContacts(user.getId());
 
-		ArrayList<Contacts> contacts = contactsImpl.getAllContacts(Integer.parseInt(user.getId()));
-		request.setAttribute("contacts", contacts);
+		request.setAttribute("contactList", contactList);
 		request.getSession().setAttribute("user", user);
 		request.getRequestDispatcher("contactList.jsp").forward(request, response);
 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
 }

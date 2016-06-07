@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="stylesheet" href="css/css/indexmain.css">
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/css/bootstrap.min.css" rel="stylesheet">
 <title>Web Phone Book</title>
 </head>
 <body>

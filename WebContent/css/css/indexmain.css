@@ -1,6 +1,6 @@
 .nav a {
   color: #e1e1d0;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   padding: 14px 10px;
   text-transform: uppercase;
@@ -22,7 +22,7 @@
 
 .jumbotron .container {
   position: relative;
-  top:20px;
+  top:5px;
   
 }
 

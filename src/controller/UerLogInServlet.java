@@ -1,6 +1,5 @@
 package controller;
 
-
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -11,55 +10,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bo.Helper;
-import bo.UserImpl;
+import dao.UserDaoImplementacija;
 import dto.User;
 
-@WebServlet("/LogInServlet")
+@WebServlet("/UerLogInServlet")
 public class UerLogInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public UerLogInServlet() {
-        super();
-    
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	public UerLogInServlet() {
+		super();
+
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		User user = null;
-		
-		if (Helper.isValidEmail(email)&& Helper.isValidPassword(password)) {
 
-			UserImpl userBO = new UserImpl();
+		UserDaoImplementacija user = new UserDaoImplementacija();
 
-			try {
-				user =userBO.validateUser(email, password);
-				if (userBO.validateUser(email, password)== null) {
-					request.getRequestDispatcher("login.jsp").forward(request, response);
-					return; 
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		User validUser = user.validateUser(email, password);
 
+		if (validUser == null) {
+			request.getSession().setAttribute("user", null);
+			request.getRequestDispatcher("logIn.jsp").forward(request, response);
+			return;
 
-			request.getSession().setAttribute("user", user);
-			request.getRequestDispatcher("search.jsp").forward(request, response);
-			return; // end the execution of the doPost
-
-		} else {
-			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
+		request.getSession().setAttribute("user", validUser);
+
+		request.getRequestDispatcher("search.jsp").forward(request, response);
+
 	}
-
-		
-		
-		
-
 }

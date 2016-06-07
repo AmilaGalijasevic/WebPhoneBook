@@ -8,9 +8,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="stylesheet" href="css/css/register.css">
-<link href="css/bootstrap.min.css" rel="stylesheet">
 <title>Edit</title>
+<link rel="stylesheet" href="css/css/register.css">
+<link href="css/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -31,26 +31,41 @@
 				CONTACTS</h1>
 			<br>
 
-			<div class="container" align="pull-left">
+			<div class="container" >
 
-				<form class="form-signin" action="EditContactServlet" method="post" style="text-align: left">
+				<form class="form-signin" action="EditContactServlet" method="post" style="text-align: left" >
 
 					<div class="form-group" style="text-align: right">
-						<label for="name" class="sr-only">Name </label> <input type="text"
-							id="name" class="form-control" placeholder="Name" required
-							autofocus value="${contact.name }"> <br> <label for="lastname"
-							class="sr-only">Last name </label> <input type="text"
-							id="lastname" class="form-control" placeholder="Last name"
-							required  value="${contact.lastname }"> <br> <label for="inputEmail"
-							class="sr-only">Email address </label> <input type="email"
-							id="inputEmail" class="form-control" placeholder="Email address"
-							required autofocus value="${contact.email }"> <br> <label for="phone"
-							class="sr-only">Phone</label> <input type="text" id="text"
-							class="form-control" placeholder="Phone" required autofocus  value="${contact.phone}">
-						<br> <label for="city" class="sr-only">City </label> <input
-							type="text" id="city" class="form-control" placeholder="City"
-							required autofocus  value="${contact.city }"> <br>
-						<button class="btn btn-lg btn-primary btn-block" type="submit">Add
+					
+							<input type="hidden" name="id" value="${contactList.id}">
+						
+						<label for="name" class="sr-only">Name </label>
+						 <input type="text" id="name" name= "name" class="form-control" value="${contactList.name }" 
+						 required autofocus > <br>
+							 <label for="lastname"
+							class="sr-only">Last name </label> 
+							<input type="text"
+							id="lastname" name="lastname" class="form-control" value="${contactList.lastname }"
+							required > <br>
+							 <label for="inputEmail"
+							class="sr-only">Email address </label> 
+							<input type="email"
+							id="inputEmail"name = "email" class="form-control"value="${contactList.email }"
+							required autofocus > <br> 
+							<label for="phone"
+							class="sr-only">Phone</label>
+							 <input type="text" id="text"
+							name = "phone" class="form-control" value="${contactList.phone }" required autofocus ">
+						<br>
+						 <label for="city" class="sr-only">City </label> 
+						 <input type="text" id="city" name = "city" class="form-control" value="${contactList.city}"
+							required autofocus > <br>
+							
+					
+						
+					
+							
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Edit
 							contact</button>
 					</div>
 				</form>

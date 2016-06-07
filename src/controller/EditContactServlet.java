@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bo.ContactsImpl;
+import dao.ContactDaoImplementacija;
 import dto.Contacts;
+import dto.User;
 
 /**
  * Servlet implementation class EditContactServlet
@@ -18,31 +19,42 @@ import dto.Contacts;
 @WebServlet("/EditContactServlet")
 public class EditContactServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EditContactServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	ContactsImpl cImpl = new ContactsImpl();
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int id = Integer.parseInt(request.getParameter("id"));
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public EditContactServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-		Contacts contact = cImpl.readContact(id);
+	ContactDaoImplementacija dao = new ContactDaoImplementacija();
 
-		request.setAttribute("contact", contact);
-		request.getRequestDispatcher("edit.jsp").forward(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	
+		int id =Integer.parseInt( request.getParameter("id"));
+	
+	//	String name = request.getParameter("name");
+		Contacts contactList;
+		try {
+			contactList = dao.readContact(id);
+			request.setAttribute("contactList", contactList);
+			request.getRequestDispatcher("edit.jsp").forward(request, response);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		int id = Integer.parseInt(request.getParameter("id"));
 		String name = request.getParameter("name");
 		String lastname = request.getParameter("lastname");
@@ -57,9 +69,13 @@ public class EditContactServlet extends HttpServlet {
 		contact.setEmail(email);
 		contact.setPhone(phone);
 		contact.setCity(city);
+		
 		try {
-			if (cImpl.updateContacts(contact)) {
-				request.getRequestDispatcher("edited.jsp").forward(request, response);
+			if(dao.updateContacts(contact)){
+			
+			request.getRequestDispatcher("edited.jsp").forward(request, response);
+			}else{
+				request.getRequestDispatcher("edit.jsp").forward(request, response);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

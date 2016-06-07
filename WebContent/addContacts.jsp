@@ -8,11 +8,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="stylesheet" href="css/css/register.css">
-<link href="css/bootstrap.min.css" rel="stylesheet">
 
 <title>Add Contacts to Web Phone Book</title>
 
+<link rel="stylesheet" href="css/css/register.css">
+<link href="css/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -33,26 +33,26 @@
 		<div class="container">
 			<h1 style="color: #e1e1d0; text-align: center; font-size: 50px;">ADD
 				CONTACTS</h1>
-			<br>
+			
 
 			<div class="container" align="pull-left">
 
-				<form class="form-signin" style="text-align: left" action="addContactsServlet" method="post" >
+				<form class="form-signin" style="text-align: left" id ="addContacts" action="AddContactsServlet" method="post" >
 
 					<div class="form-group" style="text-align: right">
 						<label for="name" class="sr-only">Name </label> <input type="text"
-							id="name" class="form-control" placeholder="Name" required
-							autofocus> <br> <label for="lastname"
-							class="sr-only">Last name </label> <input type="text"
-							id="lastname" class="form-control" placeholder="Last name"
-							required> <br> <label for="inputEmail"
-							class="sr-only">Email address </label> <input type="email"
-							id="inputEmail" class="form-control" placeholder="Email address"
-							required autofocus> <br> <label for="phone"
-							class="sr-only">Phone</label> <input type="text" id="text"
-							class="form-control" placeholder="Phone" required autofocus>
-						<br> <label for="city" class="sr-only">City </label> <input
-							type="text" id="city" class="form-control" placeholder="City"
+							id="name" name = "name" class="form-control" placeholder="Name" required
+							autofocus> <br>
+						 <label for="lastname" class="sr-only">Last name </label> <input type="text"
+							id="lastname" name = "lastname" class="form-control" placeholder="Last name"
+							required> <br> 
+						<label for="email" class="sr-only">Email address </label> <input type="email"
+							id="email" name= "email" class="form-control" placeholder="Email address"
+							required autofocus> <br> 
+						<label for="phone" class="sr-only">Phone</label> <input type="text" id="phone"
+							name= "phone" class="form-control" placeholder="Phone" required autofocus><br> 
+						<label for="city" class="sr-only">City </label> <input
+							type="text" id="city" name = "city" class="form-control" placeholder="City"
 							required autofocus> <br>
 						<button class="btn btn-lg btn-primary btn-block" type="submit">Add
 							contact</button>

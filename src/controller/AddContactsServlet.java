@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bo.ContactsImpl;
+import dao.ContactDaoImplementacija;
 import dto.Contacts;
 import dto.User;
 
@@ -28,7 +28,7 @@ public class AddContactsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		User user = (User) request.getSession(false).getAttribute("user");
+		User user =  (User) request.getSession(false).getAttribute("user");
 
 		String name = request.getParameter("name");
 		String lastname = request.getParameter("lastname");
@@ -44,17 +44,17 @@ public class AddContactsServlet extends HttpServlet {
 		contact.setPhone(phone);
 		contact.setCity(city);
 
-		ContactsImpl cImpl = new ContactsImpl();
+		//ContactsImpl cImpl = new ContactsImpl();
+		ContactDaoImplementacija cImpl = new ContactDaoImplementacija();
 		try {
-			if (cImpl.AddContacts(contact, Integer.parseInt(user.getId()))) {
+			if (cImpl.AddContacts(contact, user.getId())) {
 				request.getSession().setAttribute("user", user);
-				request.setAttribute("name", name);
-				request.getRequestDispatcher("Added.jsp").forward(request, response);
+			//	request.setAttribute("name", name);
+				response.sendRedirect("Added.jsp");
 			} else {
-				response.getWriter().println("fail");
+				request.getRequestDispatcher("search.jsp").forward(request, response);
 			}
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

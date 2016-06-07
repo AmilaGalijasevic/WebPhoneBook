@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bo.Helper;
-import bo.UserImpl;
+import dao.UserDaoImplementacija;
 import dto.User;
 
 /**
@@ -30,30 +29,26 @@ public class RegisterServlet extends HttpServlet {
 
 		String name = request.getParameter("name");
 		String lastname = request.getParameter("lastname");
-		String email = request.getParameter("inputEmail");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String city = request.getParameter("city");
 
-		if (Helper.isValidEmail(email) && Helper.isValidPassword(password)) {
+		UserDaoImplementacija userDAO = new UserDaoImplementacija();
 
-			// create a new user
-			User user = new User(name, lastname, password, email, city);
+		User user = new User(name, lastname, password, email, city);
+		try {
 
-			UserImpl uImpl = new UserImpl();
+			if (userDAO.register(user)) {
+				request.getRequestDispatcher("logIn.jsp").forward(request, response);
+			} else {
+				request.getRequestDispatcher("register.jsp").forward(request, response);
 
-			try {
-				if (uImpl.register(user)) {
-					request.getRequestDispatcher("edit.jsp").forward(request, response);
-					return;
-
-				} else {
-					request.getRequestDispatcher("Added.jsp").forward(request, response);
-
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 	}
 
 }

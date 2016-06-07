@@ -10,7 +10,7 @@ public class ConnManager {
 	// DB credentials
 	private final String USERNAME = "root";
 	private final String PASSWORD = "root";
-	private final String CONN_STRING = "jdbc:mysql://localhost/got";
+	private final String CONN_STRING = "jdbc:mysql://localhost/phonebook";
 	private final String DRIVER = "com.mysql.jdbc.Driver";
 
 	// connection object
@@ -22,7 +22,7 @@ public class ConnManager {
 	}
 
 	public static ConnManager getInstance() {
-		
+
 		if (instance == null) {
 			instance = new ConnManager();
 		}
@@ -31,8 +31,8 @@ public class ConnManager {
 
 	private boolean openConnection() {
 		try {
+			
 			Class.forName(DRIVER);
-	
 			connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
 			return true;
 		} catch (SQLException | ClassNotFoundException e) {
@@ -44,7 +44,6 @@ public class ConnManager {
 	public Connection getConnection() {
 		if (connection == null) {
 			if (openConnection()) {
-				System.out.println("Connected");
 				return connection;
 			} else {
 				return null;
@@ -54,7 +53,7 @@ public class ConnManager {
 	}
 
 	void close() {
-		System.out.println("Closing connection");
+
 		try {
 			connection.close();
 			connection = null;

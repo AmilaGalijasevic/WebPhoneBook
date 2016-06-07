@@ -1,6 +1,6 @@
 package bo;
 
-import dto.Contacts;
+import dao.UserDaoImplementacija;
 import dto.User;
 
 public class Helper {
@@ -8,44 +8,39 @@ public class Helper {
 	public static boolean isUserNotNull(User user) {
 		if (user == null) {
 			return false;
+		} else {
+			return true;
 		}
-		return true;
+
 	}
 
-	public static boolean isValidPassword(String password) {
-//		if ((password.length() < 6) || (password.trim() == "")) {
-//			return false;
-//		}
-		return true;
+	public static boolean isUserAlreadyRegistered(User user) {
+		if (user.getEmail() != null) {
+			return false;
+		} else {
+			return true;
+		}
+
 	}
 
-	public static boolean isValidEmail(String email) {
-//		if ((email.length() < 2) || (email.trim() == "")) {
-//			return false;
-//		}
-		return true;
+	public static boolean validatePass(String pass) {
+		if (pass.length() < 6) {
+			return false;
+		} else {
+			return true;
+		}
+
 	}
 
 	public static boolean isValidUser(User user) {
-		if (isUserNotNull(user) && isValidPassword(user.getPassword()) && isValidEmail(user.getEmail())) {
+	UserDaoImplementacija dao = new UserDaoImplementacija();
+	user = dao.validateUser(user.getEmail(), user.getPassword());
+		if ((!isUserAlreadyRegistered(user))&&(isUserNotNull(user)) && (validatePass(user.getPassword())) ){
 			return true;
-		}
-		return false;
-	}
-
-	public static boolean isContactNotNull(Contacts contact) {
-		if (contact == null) {
+		} else {
 			return false;
 		}
-		return true;
+
 	}
-
-	public static boolean isValidId(int userId) {
-
-		if (userId > 0) {
-			return true;
-		}
-
-		return false;
-	}
+	
 }

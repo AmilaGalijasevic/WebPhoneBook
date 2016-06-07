@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bo.ContactsImpl;
+import dao.ContactDaoImplementacija;
 import dto.Contacts;
+import dto.User;
 
 @WebServlet("/SearchServlet")
 public class SearchServlet extends HttpServlet {
@@ -22,21 +23,30 @@ public class SearchServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	ContactsImpl contactBO = new ContactsImpl();
+	ContactDaoImplementacija contacts = new ContactDaoImplementacija();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String name = request.getParameter("name");
-		int id = Integer.parseInt(request.getParameter("id"));
+		User user = (User) request.getSession(false).getAttribute("user");
+		int userID = user.getId();
+
 		response.getWriter().print(name);
 
-		ArrayList<Contacts> contacts;
+		ArrayList<Contacts> contactList;
+
 		try {
-			contacts = contactBO.SearchContacts(name, id);
-			request.setAttribute("contacts", contacts);
-			request.getRequestDispatcher("contactList.jsp").forward(request, response);
+			contactList = contacts.SearchContacts(name, userID);
+
+			request.getSession().setAttribute("user", user);
+
+			request.getSession().setAttribute("contactList", contactList);
+
+			request.getRequestDispatcher("searchList.jsp").forward(request, response);
+
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

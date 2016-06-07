@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/css/register.css">
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/css/bootstrap.min.css" rel="stylesheet">
 <title>Web Phone Book</title>
 </head>
 <body>

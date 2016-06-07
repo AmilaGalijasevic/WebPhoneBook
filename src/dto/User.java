@@ -6,7 +6,7 @@ public class User {
 	private String password;
 	private String email;
 	private String city;
-	private String id;
+	private int id;
 	public User() {
 	}
 
@@ -63,11 +63,11 @@ public class User {
 		this.city = city;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

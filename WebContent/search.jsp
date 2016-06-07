@@ -10,7 +10,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <link rel="stylesheet" href="css/css/register.css">
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/css/bootstrap.min.css" rel="stylesheet">
 <title>Search Web Phone Book</title>
 
 </head>
@@ -31,17 +31,16 @@
 		</div>
 		<div class="container">
 			<h1 style="color: #e1e1d0; text-align: center; font-size: 50px;">SEARCH</h1>
-
+			<br></br>
 
 			<div class="container">
-
+					
 				<form class="form-signin" action="SearchServlet" method="get" >
 					<h2 class="form-signin-heading"></h2>
 					<label for="inputEmail" class="sr-only">Search contacts</label> <input
-						type="email" id="inputEmail" class="form-control"
-						placeholder="Search contacts" required autofocus>
-
-					<div class="checkbox"></div>
+						type="text" id="name" name ="name" class="form-control"
+						placeholder="Enter name" required autofocus>
+<br>
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
 				</form>
 

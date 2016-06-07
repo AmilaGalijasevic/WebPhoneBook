@@ -1,6 +1,6 @@
 .nav a {
   color: #e1e1d0;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   padding: 14px 10px;
   text-transform: uppercase;
@@ -8,6 +8,7 @@
 
 .nav li {
   display: inline;
+ 
 }
 
 .jumbotron {
@@ -20,7 +21,7 @@
 
 .jumbotron .container {
   position: relative;
-  top:30px;
+  top:1px;
   
 }
 
@@ -33,53 +34,73 @@
   position: absolute;
   top:5px;
   left:90px;
- 
+  padding: 0px 5px;
 }
-.form-signin {
+.form-group {
+	
   max-width: 400px;
-  padding: 80px;
+  padding: 60px;
   margin: left ;
   color:#e1e1d0;
-   font-size:20px; 
+   font-size:18px; 
 }
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
+
+.form-signin{
+ padding: 80px;
+  width: 500px;
+   height:50px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+ 
+  font-size: 15px;
+	
+}
+
+.form-group .form-signin-heading,
+.form-group .checkbox {
+
+	
   margin-bottom: 10px;
 }
-.form-signin .checkbox {
+.form-group .checkbox {
   font-weight: normal;
    top:510px;
    
 }
-.form-signin .form-control {
+.form-group .form-control {
   position: relative;
-  height:40px;
+  
+  height:50px;
   width: 400px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
+  padding: 5px;
+  font-size: 18px;
 }
-.form-signin .form-control:focus {
+.form-group .form-control:focus {
   z-index: 2;
 }
-.form-signin input[type="email"] {
+.form-group input[type="email"] {
+	
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.form-signin input[type="password"] {
+.form-group input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 .table {
-	padding: 250px;
+	 margin-top:40px;
+	padding: 500px;
 	color: #e1e1d0;
 	 left: 30px;
 	  text-align: left;  
   font-family: 'Shift', "Palatino Linotype", serif;
 }
+
 
 
